@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 题目11：基于 SM2 的数字签名系统（Python 桌面 GUI）
 
 本项目实现一个基于 SM2 的数字签名与验签系统，包含：
@@ -322,8 +322,4 @@ python -m pip install -r requirements.txt
 * 验证方案输出：`validation_report_*.json` + 控制台 PASS 截图
 * 批量测试输出：`batch_report_*.json`（通过率 + 性能统计表）
 
-```
 
-如果你希望 README 里加入“**提交清单**”（比如需要提交哪些源码文件/截图/报告 JSON），我也可以按你老师要求的格式再补一版。
-```
->>>>>>> 99ee6cc1f27b24ec55020dfe9c9023f9d66fedb0
