@@ -1,0 +1,45 @@
+{
+  "backend": "gmssl",
+  "uid": "1234567812345678",
+  "message": "temperature=23.5;device=sensor-001;ts=1700000000",
+  "timestamp": "2025-12-31T03:38:57",
+  "cases": [
+    {
+      "name": "正常验签",
+      "expected": true,
+      "actual": true,
+      "sign_ms": 3.246,
+      "verify_ms": 6.344
+    },
+    {
+      "name": "重放风险验证（同一消息+签名重复验证）",
+      "expected": true,
+      "actual": true,
+      "detail": {
+        "note": "该用例用于说明：签名算法本身不防重放；若不引入 nonce/timestamp/序列号等机制，同一消息与签名可被重复提交并通过验签。"
+      },
+      "verify_twice_ms": 12.6
+    },
+    {
+      "name": "篡改消息后验签",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "tampered_message": "temperature=23.5;device=sensor-001;ts=170000000X"
+      }
+    },
+    {
+      "name": "伪造签名（他人私钥签）",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "User ID 不一致",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "uid_bad": "0000000000000000"
+      }
+    }
+  ]
+}

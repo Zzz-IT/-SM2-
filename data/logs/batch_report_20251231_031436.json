@@ -1,0 +1,930 @@
+{
+  "backend": "gmssl",
+  "timestamp": "2025-12-31T03:14:35",
+  "config": {
+    "rounds": 20,
+    "message_lengths": [
+      64,
+      256,
+      1024
+    ],
+    "uid": "1234567812345678"
+  },
+  "runs": [
+    {
+      "uid": "1234567812345678",
+      "message_len": 64,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUV",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.303,
+          "verify_ms": 6.384
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 1
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 256,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.153,
+          "verify_ms": 6.414
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "XYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ01X"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 2
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 1024,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 2.955,
+          "verify_ms": 6.266
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "OPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 3
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 64,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUV",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.08,
+          "verify_ms": 6.205
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 4
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 256,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.13,
+          "verify_ms": 6.248
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "XYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ01X"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 5
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 1024,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.45,
+          "verify_ms": 6.864
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "OPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 6
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 64,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUV",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.244,
+          "verify_ms": 6.595
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 7
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 256,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.103,
+          "verify_ms": 6.283
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "XYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ01X"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 8
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 1024,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.146,
+          "verify_ms": 6.41
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "OPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 9
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 64,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUV",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.301,
+          "verify_ms": 6.324
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 10
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 256,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.139,
+          "verify_ms": 6.354
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "XYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ01X"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 11
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 1024,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.184,
+          "verify_ms": 6.151
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "OPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 12
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 64,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUV",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.104,
+          "verify_ms": 6.229
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 13
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 256,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.115,
+          "verify_ms": 6.495
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "XYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ01X"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 14
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 1024,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.165,
+          "verify_ms": 6.304
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "OPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 15
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 64,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUV",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 2.998,
+          "verify_ms": 6.296
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 16
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 256,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.095,
+          "verify_ms": 6.275
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "XYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ01X"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 17
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 1024,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.004,
+          "verify_ms": 6.137
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "OPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 18
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 64,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUV",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.118,
+          "verify_ms": 6.306
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUX"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 19
+    },
+    {
+      "uid": "1234567812345678",
+      "message_len": 256,
+      "message_preview": "device=sensor-001;temp=23.5;ts=1700000000;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCD",
+      "cases": [
+        {
+          "name": "正常验签",
+          "expected": true,
+          "actual": true,
+          "sign_ms": 3.145,
+          "verify_ms": 6.322
+        },
+        {
+          "name": "篡改消息后验签",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "tampered_message": "XYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZ01X"
+          }
+        },
+        {
+          "name": "伪造签名（他人私钥签）",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "User ID 不一致",
+          "expected": false,
+          "actual": false,
+          "detail": {
+            "uid_bad": "0000000000000000"
+          }
+        },
+        {
+          "name": "签名随机性（同消息二次签名）",
+          "expected": true,
+          "actual": true,
+          "detail": {
+            "sig_equals": false
+          }
+        }
+      ],
+      "round_index": 20
+    }
+  ],
+  "summary": {
+    "case_pass_rate": {
+      "正常验签": {
+        "total": 20,
+        "passed": 20,
+        "pass_rate": 1.0
+      },
+      "篡改消息后验签": {
+        "total": 20,
+        "passed": 20,
+        "pass_rate": 1.0
+      },
+      "伪造签名（他人私钥签）": {
+        "total": 20,
+        "passed": 20,
+        "pass_rate": 1.0
+      },
+      "User ID 不一致": {
+        "total": 20,
+        "passed": 20,
+        "pass_rate": 1.0
+      },
+      "签名随机性（同消息二次签名）": {
+        "total": 20,
+        "passed": 20,
+        "pass_rate": 1.0
+      }
+    },
+    "perf": {
+      "sign_ms_avg": 3.147,
+      "sign_ms_max": 3.45,
+      "verify_ms_avg": 6.343,
+      "verify_ms_max": 6.864
+    }
+  }
+}

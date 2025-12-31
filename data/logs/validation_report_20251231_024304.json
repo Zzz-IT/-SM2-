@@ -1,0 +1,36 @@
+{
+  "backend": "gmssl",
+  "uid": "1234567812345678",
+  "message": "temperature=23.5;device=sensor-001;ts=1700000000",
+  "timestamp": "2025-12-31T02:43:04",
+  "cases": [
+    {
+      "name": "正常验签",
+      "expected": true,
+      "actual": true,
+      "sign_ms": 3.222,
+      "verify_ms": 6.455
+    },
+    {
+      "name": "篡改消息后验签",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "tampered_message": "temperature=23.5;device=sensor-001;ts=170000000X"
+      }
+    },
+    {
+      "name": "伪造签名（他人私钥签）",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "User ID 不一致",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "uid_bad": "0000000000000000"
+      }
+    }
+  ]
+}
